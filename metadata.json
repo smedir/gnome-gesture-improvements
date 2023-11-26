@@ -1,13 +1,9 @@
 {
-	"description": "Improve touchpad gestures for Wayland/X11",
-	"name": "Gesture Improvements",
-	"shell-version": [
-		"42",
-		"43",
-		"44"
-	],
-	"settings-schema": "org.gnome.shell.extensions.gestureImprovements",
-	"url": "https://github.com/harshadgavali/gnome-gesture-improvements",
-	"uuid": "gestureImprovements@gestures",
-	"version": 25.0
+  "name": "gnome-shell-extension-typescript-template",
+  "uuid": "typescript-template@swsnr.de",
+  "description": "Typescript template for GNOME shell extensions",
+  "version-name": "1.0.0",
+  "url": "https://github.com/swsnr/gnome-shell-extension-typescript-template",
+  "shell-version": ["45"],
+  "settings-schema": "org.gnome.shell.extensions.typescript-template"
 }
