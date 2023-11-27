@@ -1,8 +1,8 @@
-import Gio from '@gi-types/gio2';
-import GObject from '@gi-types/gobject2';
-import Gtk from '@gi-types/gtk4';
-import Gdk from '@gi-types/gdk4';
-import Adw from '@gi-types/adw1';
+import Gio from 'gi://Gio';
+import GObject from 'gi://Gio';
+import Gtk from 'gi://Gtk';
+import Gdk from 'gi://Gdk';
+import Adw from 'gi://Adw';
 import { AllUIObjectKeys, BooleanSettingsKeys, DoubleSettingsKeys, EnumSettingsKeys, GioSettings, IntegerSettingsKeys } from './settings';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
