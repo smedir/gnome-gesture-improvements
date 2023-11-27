@@ -17,7 +17,7 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 
-import type Gio from "../../gir-generated/gio-2.0.js";
+import type Gio from '../../gir-generated/gio-2.0.js';
 
 // See https://gjs.guide/extensions/topics/extension.html#gettext
 export declare function gettext(str: string): string;
@@ -33,26 +33,26 @@ export declare interface ExtensionMetadata {
   readonly uuid: string;
   readonly name: string;
   readonly description: string;
-  readonly "version-name": string;
-  readonly "shell-version": readonly string[];
+  readonly 'version-name': string;
+  readonly 'shell-version': readonly string[];
   readonly dir: Gio.File;
   readonly path: string;
   readonly url: string;
 }
 
 declare class ExtensionBase {
-  constructor(metadata: ExtensionMetadata);
+	constructor(metadata: ExtensionMetadata);
 
-  get metadata(): ExtensionMetadata;
-  getSettings(schema?: string): Gio.Settings;
+	get metadata(): ExtensionMetadata;
+	getSettings(schema?: string): Gio.Settings;
 }
 
 export declare class Extension extends ExtensionBase {
-  constructor(metadata: ExtensionMetadata);
+	constructor(metadata: ExtensionMetadata);
 
-  enable(): void;
+	enable(): void;
 
-  disable(): void;
+	disable(): void;
 
-  openPreferences(): void;
+	openPreferences(): void;
 }

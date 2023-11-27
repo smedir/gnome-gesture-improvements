@@ -22,14 +22,14 @@ import type Adw from 'gi://Adw';
 import { ExtensionBase } from 'resource:///org/gnome/shell/extensions/extension.js';
 
 export declare class ExtensionPreferences extends ExtensionBase {
-  getPreferencesWidget(): Gtk.Widget;
+	getPreferencesWidget(): Gtk.Widget;
 
-  fillPreferencesWindow(window: Adw.PreferencesWindow): void;
+	fillPreferencesWindow(window: Adw.PreferencesWindow): void;
 }
 
 export {
-  gettext,
-  ngettext,
-  pgettext,
-  ExtensionMetadata,
+	gettext,
+	ngettext,
+	pgettext,
+	ExtensionMetadata,
 } from 'resource:///org/gnome/shell/extensions/extension.js';

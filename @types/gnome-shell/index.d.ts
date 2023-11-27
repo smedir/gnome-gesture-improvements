@@ -2,6 +2,7 @@ import Clutter from '../gir-generated/clutter-13';
 import Gio from '../gir-generated/gio-2.0';
 import GObject from '../gir-generated/gobject-2.0';
 import Meta from '../gir-generated/meta-13';
+import Mtk from '../gir-generated/mtk-13';
 import Shell from '../gir-generated/shell-13';
 import St from '../gir-generated/st-13';
 
@@ -39,9 +40,10 @@ declare namespace imports {
 		function domain(name: string): { gettext(message: string): string; };
 	}
 
-	namespace misc {
-		const extensionUtils: ExtensionUtilsMeta;
-	}
+	// namespace misc {
+	// 	const extensionUtils: ExtensionUtilsMeta;
+	// }
+
 	namespace ui {
 		namespace main {
 			const actionMode: Shell.ActionMode;
@@ -82,7 +84,7 @@ declare namespace imports {
 				monitors: __shell_private_types.IMonitorState[],
 				primaryMonitor: __shell_private_types.IMonitorState,
 				currentMonitor: __shell_private_types.IMonitorState,
-				getWorkAreaForMonitor: (index: number) => Meta.Rectangle,
+				getWorkAreaForMonitor: (index: number) => Mtk.Rectangle,
 
 				connect(id: 'monitors-changed', callback: () => void);
 			};
