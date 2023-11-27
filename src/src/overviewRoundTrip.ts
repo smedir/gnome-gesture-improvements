@@ -1,12 +1,12 @@
 import Clutter from 'gi://Clutter';
-import Shell from '@gi-types/shell';
-import { global, imports } from 'gnome-shell';
+import Shell from 'gi://Shell';
+// import { global, imports } from 'gnome-shell';
 import { OverviewNavigationState } from '../common/settings';
 import { ExtSettings, OverviewControlsState } from '../constants';
 import { createSwipeTracker } from './swipeTracker';
 
-const Main = imports.ui.main;
-const { SwipeTracker } = imports.ui.swipeTracker;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import { SwipeTracker } from 'resource:///org/gnome/shell/ui/swipeTracker.js';
 
 // declare enum
 enum ExtensionState {

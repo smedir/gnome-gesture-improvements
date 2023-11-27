@@ -1,8 +1,8 @@
 import Clutter from 'gi://Clutter';
-import Meta from '@gi-types/meta';
-import Shell from '@gi-types/shell';
+import Meta from 'gi://Meta';
+import Shell from 'gi://Shell';
 import St from 'gi://St';
-import { global, imports } from 'gnome-shell';
+//import { global, imports } from 'gnome-shell';
 import { registerClass } from '../common/utils/gobject';
 import { ExtSettings } from '../constants';
 import { createSwipeTracker, TouchpadSwipeGesture } from './swipeTracker';
@@ -10,10 +10,10 @@ import { easeActor, easeAdjustment } from './utils/environment';
 import { getVirtualKeyboard, IVirtualKeyboard } from './utils/keyboard';
 
 
-const Main = imports.ui.main;
-const Utils = imports.misc.util;
+import * as Utils from 'resource:///org/gnome/shell/misc/util.js';
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import { SwipeTracker } from 'resource:///org/gnome/shell/ui/swipeTracker.js';
 
-const { SwipeTracker } = imports.ui.swipeTracker;
 
 const WINDOW_ANIMATION_TIME = 250;
 const UPDATED_WINDOW_ANIMATION_TIME = 150;

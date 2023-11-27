@@ -1,5 +1,4 @@
-// import GObject from '@gi-types/gobject2';
-import Gio from 'gi://Gio';
+// import GObject from 'gi://GObject';import Gio from 'gi://Gio';
 import Clutter from 'gi://Clutter';
 import St from 'gi://St';
 
