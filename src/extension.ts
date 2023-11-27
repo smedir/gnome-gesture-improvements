@@ -1,5 +1,4 @@
-import GLib from '@gi-types/glib2';
-import { imports } from 'gnome-shell';
+import GLib from "gi://GLib";
 import { AllSettingsKeys, GioSettings, PinchGestureType } from './common/settings';
 import * as Constants from './constants';
 import { AltTabConstants, ExtSettings, TouchpadConstants } from './constants';
@@ -13,16 +12,17 @@ import { SnapWindowExtension } from './src/snapWindow';
 import * as DBusUtils from './src/utils/dbus';
 import * as VKeyboard from './src/utils/keyboard';
 
-const ExtensionUtils = imports.misc.extensionUtils;
+import { Extension, ExtensionMetadata } from "resource:///org/gnome/shell/extensions/extension.js";
 
-class Extension {
+export default class Myextension extends Extension {
 	private _extensions: ISubExtension[];
 	settings?: GioSettings;
 	private _settingChangedId = 0;
 	private _reloadWaitId = 0;
 	private _addReloadDelayFor: AllSettingsKeys[];
 
-	constructor() {
+	constructor(metadata: ExtensionMetadata) {
+		super(metadata)
 		this._extensions = [];
 		this._addReloadDelayFor = [
 			'touchpad-speed-scale',
@@ -32,7 +32,7 @@ class Extension {
 	}
 
 	enable() {
-		this.settings = ExtensionUtils.getSettings();
+		this.settings = this.getSettings();
 		this._settingChangedId = this.settings.connect('changed', this.reload.bind(this));
 		this._enable();
 	}
@@ -149,8 +149,4 @@ class Extension {
 
 		return gestureToFingersMap;
 	}
-}
-
-export function init(): IExtension {
-	return new Extension();
 }
