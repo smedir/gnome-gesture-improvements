@@ -1,4 +1,4 @@
-import Clutter from '@gi-types/clutter';
+import Clutter from 'gi://Clutter';
 import Shell from '@gi-types/shell';
 import { global, imports } from 'gnome-shell';
 import { OverviewNavigationState } from '../common/settings';

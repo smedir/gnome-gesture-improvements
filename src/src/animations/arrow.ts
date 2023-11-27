@@ -1,15 +1,16 @@
 // import GObject from '@gi-types/gobject2';
-import Gio from '@gi-types/gio2';
-import Clutter from '@gi-types/clutter';
-import St from '@gi-types/st';
+import Gio from 'gi://Gio';
+import Clutter from 'gi://Clutter';
+import St from 'gi://St';
 
-import { imports } from 'gnome-shell';
 import { registerClass } from '../../common/utils/gobject';
 import { easeActor } from '../utils/environment';
 import { WIGET_SHOWING_DURATION } from '../../constants';
 
-const ExtMe = imports.misc.extensionUtils.getCurrentExtension();
-const Util = imports.misc.util;
+import * as Util from 'resource:///org/gnome/shell/misc/util.js';
+import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
+
+const ExtMe = Extension.lookupByURL(import.meta.url);
 
 declare type IconList = 'arrow1-right-symbolic.svg' | 'arrow1-left-symbolic.svg';
 

@@ -1,4 +1,4 @@
-import Clutter from '@gi-types/clutter';
+import Clutter from 'gi://Clutter';
 import GObject from '@gi-types/gobject2';
 import Shell from '@gi-types/shell';
 import { CustomEventType, global, imports, __shell_private_types } from 'gnome-shell';

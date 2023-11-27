@@ -1,4 +1,4 @@
-import Clutter from '@gi-types/clutter';
+import Clutter from 'gi://Clutter';
 import Shell from '@gi-types/shell';
 import Meta from '@gi-types/meta';
 

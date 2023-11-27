@@ -1,5 +1,5 @@
-import Clutter from '@gi-types/clutter';
-import Gio from '@gi-types/gio2';
+import Clutter from 'gi://Clutter';
+import Gio from 'gi://Gio';
 import GObject from '@gi-types/gobject2';
 import { CustomEventType, global, imports } from 'gnome-shell';
 import { registerClass } from '../../common/utils/gobject';

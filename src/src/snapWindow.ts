@@ -1,7 +1,7 @@
-import Clutter from '@gi-types/clutter';
+import Clutter from 'gi://Clutter';
 import Meta from '@gi-types/meta';
 import Shell from '@gi-types/shell';
-import St from '@gi-types/st';
+import St from 'gi://St';
 import { global, imports } from 'gnome-shell';
 import { registerClass } from '../common/utils/gobject';
 import { ExtSettings } from '../constants';
