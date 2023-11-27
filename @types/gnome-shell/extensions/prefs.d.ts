@@ -17,9 +17,9 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 
-import type Gtk from "gi://Gtk";
-import type Adw from "gi://Adw";
-import { ExtensionBase } from "resource:///org/gnome/shell/extensions/extension.js";
+import type Gtk from 'gi://Gtk';
+import type Adw from 'gi://Adw';
+import { ExtensionBase } from 'resource:///org/gnome/shell/extensions/extension.js';
 
 export declare class ExtensionPreferences extends ExtensionBase {
   getPreferencesWidget(): Gtk.Widget;
@@ -32,4 +32,4 @@ export {
   ngettext,
   pgettext,
   ExtensionMetadata,
-} from "resource:///org/gnome/shell/extensions/extension.js";
+} from 'resource:///org/gnome/shell/extensions/extension.js';
