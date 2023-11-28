@@ -40,10 +40,12 @@ declare namespace imports {
 		function domain(name: string): { gettext(message: string): string; };
 	}
 
-	// namespace misc {
-	// 	const extensionUtils: ExtensionUtilsMeta;
-	// }
-
+    namespace misc {
+		namespace util {
+			function spawn(argv: string[]): void;
+			function lerp(start: number, end: number, progress: number): number;
+		}
+	}
 	namespace ui {
 		namespace main {
 			const actionMode: Shell.ActionMode;

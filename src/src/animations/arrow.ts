@@ -1,6 +1,7 @@
 // import GObject from 'gi://GObject';import Gio from 'gi://Gio';
 import Clutter from 'gi://Clutter';
 import St from 'gi://St';
+import Gio from 'gi://Gio';
 
 import { registerClass } from '../../common/utils/gobject';
 import { easeActor } from '../utils/environment';
@@ -9,7 +10,8 @@ import { WIGET_SHOWING_DURATION } from '../../constants';
 import * as Util from 'resource:///org/gnome/shell/misc/util.js';
 import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 
-const ExtMe = Extension.lookupByURL(import.meta.url);
+const Me = 'gestureImprovements@gestures';
+const ExtMe = Extension.lookupByUUID(Me);
 
 declare type IconList = 'arrow1-right-symbolic.svg' | 'arrow1-left-symbolic.svg';
 

@@ -26,7 +26,10 @@
       // Our own types.  First as they are seen in GNOME shell extensions,
       // and then how they're seen by prefs.js.
       "resource:///org/gnome/shell/*": ["./@types/gnome-shell/*"],
-      "resource:///org/gnome/Shell/Extensions/js/*": ["./@types/gnome-shell/*"]
+      "resource:///org/gnome/Shell/Extensions/js/*": ["./@types/gnome-shell/*"],
+      "resource:///org/gnome/shell/misc/util.js": ["./@types/gnome-shell/index.d.ts"],
+      "resource:///org/gnome/shell/ui/main.js": ["./@types/gnome-shell/index.d.ts"]
+
     },
     "skipLibCheck": false
   },

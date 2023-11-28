@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 // Copyright Sebastian Wiesner <sebastian@swsnr.de>
 //
 // This Source Code Form is subject to the terms of the Mozilla Public
@@ -45,14 +46,20 @@ declare class ExtensionBase {
 
 	get metadata(): ExtensionMetadata;
 	getSettings(schema?: string): Gio.Settings;
+	lookupByUrl(url: string): ExtensionBase;
+  lookupByUUID(uuid: string): ExtensionBase;
+  get dir(): ExtensionMetadata['dir'];
 }
 
 export declare class Extension extends ExtensionBase {
-	constructor(metadata: ExtensionMetadata);
+	static lookupByUUID(uuid: ExtensionMetadata['uuid']): Extension;
 
+  constructor(metadata: ExtensionMetadata);
+  
 	enable(): void;
-
+  
 	disable(): void;
-
+  
 	openPreferences(): void;
+
 }

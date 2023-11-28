@@ -3,7 +3,7 @@ import Meta from 'gi://Meta';
 import Shell from 'gi://Shell';
 import St from 'gi://St';
 
-import { global, imports } from 'resource:///org/gnome/shell';
+import { global } from 'resource:///org/gnome/shell';
 
 import { PinchGestureType } from '../../common/settings';
 import { WIGET_SHOWING_DURATION } from '../../constants';
