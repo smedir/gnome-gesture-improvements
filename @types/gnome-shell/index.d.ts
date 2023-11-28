@@ -247,3 +247,7 @@ export type CustomEventType = Pick<
 	'get_coords' | 'get_gesture_motion_delta_unaccelerated' |
 	'get_gesture_pinch_scale' | 'get_gesture_pinch_angle_delta'
 >;
+
+export function lerp(from: number, end: number, progress: number): number {
+	throw new Error('Function not implemented.');
+}

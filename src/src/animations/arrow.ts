@@ -10,8 +10,8 @@ import { WIGET_SHOWING_DURATION } from '../../constants';
 import * as Util from 'resource:///org/gnome/shell/misc/util.js';
 import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
 
-const Me = 'gestureImprovements@gestures';
-const ExtMe = Extension.lookupByUUID(Me);
+const UUID = 'gestureImprovements@gestures';
+const ExtMe = Extension.lookupByUUID(UUID);
 
 declare type IconList = 'arrow1-right-symbolic.svg' | 'arrow1-left-symbolic.svg';
 

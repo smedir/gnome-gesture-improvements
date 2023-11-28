@@ -8,11 +8,11 @@ import { registerClass } from './utils/gobject';
 import { printStack } from './utils/logging';
 
 /** return icon image for give app */
-function getAppIconImage(app: Gio.AppInfoPrototype) {
+function getAppIconImage(app: Gio.AppInfo) {
 	const iconName =  app.get_icon()?.to_string() ?? 'icon-missing';
 	return new Gtk.Image({
 		gicon: Gio.icon_new_for_string(iconName),
-		iconSize: Gtk.IconSize.LARGE,
+		icon_size: Gtk.IconSize.LARGE,
 	});
 }
 
@@ -45,17 +45,17 @@ const AppChooserDialog = registerClass(
 		 * @param apps list of apps to display in dialog
 		 * @param parent parent window, dialog will be transient for parent
 		 */
-		constructor(apps: Gio.AppInfoPrototype[], parent: Adw.Window) {
+		constructor(apps: Gio.AppInfo[], parent: Adw.Window) {
 			super({
 				modal: true,
-				transientFor: parent,
-				destroyWithParent: false,
+				transient_for: parent,
+				destroy_with_parent: false,
 				title: 'Select application',
 			});
 
 			this.set_default_size(
-				0.7 * parent.defaultWidth,
-				0.7 * parent.defaultHeight,
+				0.7 * parent.default_width,
+				0.7 * parent.default_height,
 			);
 
 			this._group = new Adw.PreferencesGroup();
@@ -67,7 +67,7 @@ const AppChooserDialog = registerClass(
 		}
 
 		/** for given app add row to selectable list */
-		private _addAppRow(app: Gio.AppInfoPrototype) {
+		private _addAppRow(app: Gio.AppInfo) {
 			const row = new Adw.ActionRow({
 				title: markup_escape_text(app.get_display_name()),
 				subtitle: markup_escape_text(app.get_description()),
@@ -108,7 +108,7 @@ const AppGestureSettingsRow = registerClass(
 		 * @param appGestureSettings value of current settings for app
 		 * @param model list of choices of keybings for setting
 		 */
-		constructor(app: Gio.AppInfoPrototype, appGestureSettings: AppGestureSettings, model: Gio.ListModel) {
+		constructor(app: Gio.AppInfo, appGestureSettings: AppGestureSettings, model: Gio.ListModel) {
 			super({ title: markup_escape_text(app.get_display_name())});
 			this.add_prefix(getAppIconImage(app));
 
@@ -137,7 +137,7 @@ const AppGestureSettingsRow = registerClass(
 				label: 'Remove...',
 				valign: Gtk.Align.CENTER,
 				halign: Gtk.Align.END,
-				cssClasses: ['raised'],
+				css_classes: ['raised'],
 			});
 			actionRow = new Adw.ActionRow();
 			actionRow.add_suffix(removeButton);
@@ -167,7 +167,7 @@ const AppKeybindingGesturePrefsGroup = registerClass(
 		private _appRows: Map<string, typeof AppGestureSettingsRow.prototype>;
 		private _cachedSettings: Record<string, AppGestureSettings>;
 		private _addAppButtonRow: Adw.PreferencesRow;
-		private _appGestureModel: Gtk.StringList<GObject.Object>;
+		private _appGestureModel: Gtk.StringList;
 
 		/**
 		 * @param prefsWindow parent preferences window
@@ -194,7 +194,7 @@ const AppKeybindingGesturePrefsGroup = registerClass(
 						halign: Gtk.Align.CENTER,
 						hexpand: true,
 					}),
-					cssClasses: ['custom-information-label-row', 'custom-smaller-card'],
+					css_classes: ['custom-information-label-row', 'custom-smaller-card'],
 				}),
 			);
 
@@ -225,7 +225,7 @@ const AppKeybindingGesturePrefsGroup = registerClass(
 				.sort((a, b) => a.get_id()!.localeCompare(b.get_id()!));
 
 			const appChooserDialog = new AppChooserDialog(selectableApps, this._prefsWindow);
-			appChooserDialog.connect('app-selected', (_source, appId) => this._addAppGestureRow(appId));
+			appChooserDialog.connect('app-selected', (_source: Adw.PreferencesWindow, appId: string) => this._addAppGestureRow(appId));
 			appChooserDialog.present();
 		}
 
@@ -234,9 +234,9 @@ const AppKeybindingGesturePrefsGroup = registerClass(
 		 */
 		private _buildAddAppButtonRow() {
 			const addButton = new Gtk.Button({
-				iconName: 'list-add-symbolic',
-				cssName: 'card',
-				cssClasses: ['custom-smaller-card'],
+				icon_name: 'list-add-symbolic',
+				css_name: 'card',
+				css_classes: ['custom-smaller-card'],
 			});
 
 			const addButtonRow = new Adw.PreferencesRow({ child: addButton });
@@ -263,7 +263,7 @@ const AppKeybindingGesturePrefsGroup = registerClass(
 
 			// callbacks for setting updates and remove request
 			appRow.connect('remove-request', () => this._requestRemoveAppGestureRow(appId));
-			appRow.connect('value-updated', (_source, keyBind, reverse) => {
+			appRow.connect('value-updated', (_source: AppGestureSettings, keyBind: ForwardBackKeyBinds, reverse: boolean) => {
 				this._setAppGestureSetting(appId, [keyBind, reverse]);
 			});
 
@@ -363,7 +363,7 @@ const AppKeybindingGesturePrefsGroup = registerClass(
 export function getAppKeybindingGesturePrefsPage(prefsWindow: Adw.PreferencesWindow, settings: GioSettings) {
 	const page = new Adw.PreferencesPage({
 		title: 'App Gestures',
-		iconName: 'org.gnome.Settings-applications-symbolic',
+		icon_name: 'org.gnome.Settings-applications-symbolic',
 	});
 
 	page.add(new AppKeybindingGesturePrefsGroup(prefsWindow, settings));
