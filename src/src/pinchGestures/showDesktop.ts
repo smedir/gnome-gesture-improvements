@@ -2,7 +2,7 @@ import Clutter from 'gi://Clutter';
 import GObject from 'gi://GObject';
 import Meta from 'gi://Meta';
 import Shell from 'gi://Shell';
-// import { global, imports, __shell_private_types } from 'gi://Shell';
+//import { global, __shell_private_types } from 'resource://org/gnome/shell';
 import { TouchpadPinchGesture } from '../trackers/pinchTracker';
 import { easeActor } from '../utils/environment';
 

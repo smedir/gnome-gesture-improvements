@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-mixed-spaces-and-tabs */
-import Clutter from '../gir-generated/clutter-13';
-import GObject from '../gir-generated/gobject-2.0';
-import Meta from '../gir-generated/meta-13';
-import Mtk from '../gir-generated/mtk-13';
-import Shell from '../gir-generated/shell-13';
-import St from '../gir-generated/st-13';
+import Clutter from '../../gir-generated/clutter-13';
+import GObject from '../../gir-generated/gobject-2.0';
+import Meta from '../../gir-generated/meta-13';
+import Mtk from '../../gir-generated/mtk-13';
+import Shell from '../../gir-generated/shell-13';
+import St from '../../gir-generated/st-13';
 
 
 declare const global: Shell.Global;
@@ -199,12 +199,3 @@ declare namespace ui {
         }
     }
 }
-
-// types
-export type CustomEventType = Pick<
-	Clutter.Event,
-	'type' | 'get_gesture_phase' |
-	'get_touchpad_gesture_finger_count' | 'get_time' |
-	'get_coords' | 'get_gesture_motion_delta_unaccelerated' |
-	'get_gesture_pinch_scale' | 'get_gesture_pinch_angle_delta'
->;

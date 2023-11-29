@@ -16,6 +16,9 @@
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
+import Shell from '../gir-generated/shell-13';
+import GObject from '../gir-generated/gobject-2.0';
+import Clutter from '../gir-generated/clutter-13';
 
 interface String {
   // GNOME Shell pollutes the String prototype with its own format function
@@ -27,6 +30,7 @@ interface ImportMeta {
   readonly url: string;
 }
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 
 declare function log(message: any): void;
 declare function logError(err: Error, message?: string): void;
@@ -47,3 +51,32 @@ declare interface Math {
 // types
 declare type KeysOfType<T, U> = { [P in keyof T]: T[P] extends U ? P : never; }[keyof T];
 declare type KeysThatStartsWith<K extends string, U extends string> = K extends `${U}${infer _R}` ? K : never;
+
+
+declare const global: Shell.Global;
+
+declare namespace __shell_private_types {
+  class TouchpadGesture extends GObject.Object {
+  	destroy(): void;
+  	_handleEvent(actor: Clutter.Actor | undefined, event: CustomEventType): boolean;
+  }
+
+  interface IMonitorState {
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    geometry_scale: number,
+    index: number,
+    inFullscreen: () => boolean,
+  }
+}
+
+// types
+export type CustomEventType = Pick<
+	Clutter.Event,
+	'type' | 'get_gesture_phase' |
+	'get_touchpad_gesture_finger_count' | 'get_time' |
+	'get_coords' | 'get_gesture_motion_delta_unaccelerated' |
+	'get_gesture_pinch_scale' | 'get_gesture_pinch_angle_delta'
+>;
