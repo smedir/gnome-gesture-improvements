@@ -112,8 +112,8 @@ export class CloseWindowExtension implements ISubExtension {
 	private _animatePreview(gestureCompleted: boolean, duration: number, callback?: () => void) {
 		easeActor(this._preview,  {
 			opacity: gestureCompleted ? END_OPACITY : 255,
-			scaleX: gestureCompleted ? END_SCALE : 1,
-			scaleY: gestureCompleted ? END_SCALE : 1,
+			scale_x: gestureCompleted ? END_SCALE : 1,
+			scale_y: gestureCompleted ? END_SCALE : 1,
 			duration,
 			mode: Clutter.AnimationMode.EASE_OUT_QUAD,
 			onStopped: () => {

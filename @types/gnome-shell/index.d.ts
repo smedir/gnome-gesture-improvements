@@ -189,10 +189,12 @@ declare namespace ui {
 }
 
 declare namespace misc {
-	namespace util {
-		function spawn(argv: string[]): void;
-		function lerp(start: number, end: number, progress: number): number;
-	}
+}
+
+
+declare namespace util {
+	function spawn(argv: string[]): void;
+	function lerp(start: number, end: number, progress: number): number;
 }
 
 declare namespace ui {

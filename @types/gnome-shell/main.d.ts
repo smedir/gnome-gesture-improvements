@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-mixed-spaces-and-tabs */
 import Clutter from '../gir-generated/clutter-13';
 import GObject from '../gir-generated/gobject-2.0';
@@ -171,17 +172,6 @@ declare namespace workspaceAnimation {
     }
 }
 
-declare namespace layout {
-    class MonitorConstraint extends Clutter.Constraint {
-    	constructor(params: Partial<{ primary: boolean, index: number }>);
-    }
-}
-
-declare namespace util {
-    export function spawn(argv: string[]): void;
-    export function lerp(start: number, end: number, progress: number): number;
-}
-
 declare namespace ui {
     namespace altTab {
         class WindowSwitcherPopup extends St.Widget {
@@ -218,4 +208,3 @@ export type CustomEventType = Pick<
 	'get_coords' | 'get_gesture_motion_delta_unaccelerated' |
 	'get_gesture_pinch_scale' | 'get_gesture_pinch_angle_delta'
 >;
-
