@@ -53,6 +53,7 @@ declare class ExtensionBase {
 
 export declare class Extension extends ExtensionBase {
 	static lookupByUUID(uuid: ExtensionMetadata['uuid']): Extension;
+  static lookupByURL(metaurl: string): Extension;
 
   constructor(metadata: ExtensionMetadata);
   

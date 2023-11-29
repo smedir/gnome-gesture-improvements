@@ -177,11 +177,9 @@ declare namespace layout {
     }
 }
 
-declare namespace misc {
-    namespace util {
-        function spawn(argv: string[]): void;
-        function lerp(start: number, end: number, progress: number): number;
-    }
+declare namespace util {
+    export function spawn(argv: string[]): void;
+    export function lerp(start: number, end: number, progress: number): number;
 }
 
 declare namespace ui {
@@ -220,3 +218,4 @@ export type CustomEventType = Pick<
 	'get_coords' | 'get_gesture_motion_delta_unaccelerated' |
 	'get_gesture_pinch_scale' | 'get_gesture_pinch_angle_delta'
 >;
+

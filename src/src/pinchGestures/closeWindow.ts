@@ -129,6 +129,6 @@ export class CloseWindowExtension implements ISubExtension {
 		this._preview.opacity = 255;
 		this._preview.set_scale(1, 1);
 
-		this._focusWindow = undefined;
+		this._focusWindow = null;
 	}
 }
