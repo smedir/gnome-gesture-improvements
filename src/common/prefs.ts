@@ -3,7 +3,7 @@ import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 import Gdk from 'gi://Gdk';
 import Adw from 'gi://Adw';
-import { AllUIObjectKeys, BooleanSettingsKeys, DoubleSettingsKeys, EnumSettingsKeys, GioSettings, IntegerSettingsKeys } from './settings';
+import { AllUIObjectKeys, BooleanSettingsKeys, DoubleSettingsKeys, EnumSettingsKeys, IntegerSettingsKeys } from './settings';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { getAppKeybindingGesturePrefsPage } from './appGestures';
@@ -16,7 +16,7 @@ type GtkBuilder = Omit<Gtk.Builder, 'get_object'> & {
  * Bind value of setting to {@link Gtk.SpinButton}
  * @param key key of setting and id of {@link Gtk.SpinButton} object in builder
  */
-function bind_int_value(key: IntegerSettingsKeys, settings: GioSettings, builder: GtkBuilder) {
+function bind_int_value(key: IntegerSettingsKeys, settings: Gio.Settings, builder: GtkBuilder) {
 	const button = builder.get_object<Gtk.SpinButton>(key);
 	settings.bind(key, button, 'value', Gio.SettingsBindFlags.DEFAULT);
 }
@@ -26,7 +26,7 @@ function bind_int_value(key: IntegerSettingsKeys, settings: GioSettings, builder
  * @param key key of setting and id of {@link Gtk.Switch} object in builder
  * @param flags flag used when binding setting's key to switch's {@link Gtk.Switch.active} status
  */
-function bind_boolean_value(key: BooleanSettingsKeys, settings: GioSettings, builder: GtkBuilder, flags?: Gio.SettingsBindFlags) {
+function bind_boolean_value(key: BooleanSettingsKeys, settings: Gio.Settings, builder: GtkBuilder, flags?: Gio.SettingsBindFlags) {
 	const button = builder.get_object<Gtk.Switch>(key);
 	settings.bind(key, button, 'active', flags ?? Gio.SettingsBindFlags.DEFAULT);
 }
@@ -35,7 +35,7 @@ function bind_boolean_value(key: BooleanSettingsKeys, settings: GioSettings, bui
  * Bind value of setting to {@link Adw.ComboRow}
  * @param key key of settings and id of {@link Adw.ComboRow} object in builder
  */
-function bind_combo_box(key: EnumSettingsKeys, settings: GioSettings, builder: GtkBuilder) {
+function bind_combo_box(key: EnumSettingsKeys, settings: Gio.Settings, builder: GtkBuilder) {
 	const comboRow = builder.get_object<Adw.ComboRow>(key);
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const enum_key = key as any;
@@ -49,7 +49,7 @@ function bind_combo_box(key: EnumSettingsKeys, settings: GioSettings, builder: G
  * Display value of `key` in log scale.
  * @param key key of setting and id of {@link Gtk.Scale} object in builder
  */
-function display_in_log_scale(key: DoubleSettingsKeys, label_key: AllUIObjectKeys, settings: GioSettings, builder: GtkBuilder) {
+function display_in_log_scale(key: DoubleSettingsKeys, label_key: AllUIObjectKeys, settings: Gio.Settings, builder: GtkBuilder) {
 	const scale = builder.get_object<Gtk.Scale>(key);
 	const label = builder.get_object<Gtk.Label>(label_key);
 
@@ -113,7 +113,7 @@ export function buildPrefsWidget(
 
 	const styleManager = Adw.StyleManager.get_default();
 	styleManager.connect('notify::dark', () => loadCssProvider(styleManager, uiDir));
-	loadCssProvider(styleManager ,uiDir);
+	loadCssProvider(styleManager, uiDir);
 
 	const builder = new Gtk.Builder() as GtkBuilder;
 	builder.add_from_file(`${uiDir}/gestures.ui`);

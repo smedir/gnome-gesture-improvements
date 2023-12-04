@@ -57,8 +57,8 @@ declare const global: Shell.Global;
 
 declare namespace __shell_private_types {
   class TouchpadGesture extends GObject.Object {
-  	destroy(): void;
-  	_handleEvent(actor: Clutter.Actor | undefined, event: CustomEventType): boolean;
+    destroy(): void;
+    _handleEvent(actor: Clutter.Actor | undefined, event: CustomEventType): boolean;
   }
 
   interface IMonitorState {

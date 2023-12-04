@@ -1,5 +1,6 @@
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
+import GObject from 'gi://GObject';
 
 // define enum
 export enum PinchGestureType {
@@ -101,7 +102,10 @@ export type GioSettings =
         get_int(key: IntegerSettingsKeys): number;
         get_double(key: DoubleSettingsKeys): number;
         set_double(key: DoubleSettingsKeys, value: number): void;
+        bind(value: unknown, object: GObject.Object, value2: unknown, flags: Gio.SettingsBindFlags): bind;
     } &
     SettingsEnumFunctions &
     SettingsMiscFunctions
     ;
+
+export type bind = GObject.Binding;

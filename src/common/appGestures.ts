@@ -3,7 +3,7 @@ import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Adw from 'gi://Adw';
-import { ForwardBackKeyBinds, GioSettings } from './settings';
+import { ForwardBackKeyBinds } from './settings';
 import { registerClass } from './utils/gobject';
 import { printStack } from './utils/logging';
 
@@ -162,7 +162,7 @@ const AppGestureSettingsRow = registerClass(
  */
 const AppKeybindingGesturePrefsGroup = registerClass(
 	class GIE_AppKeybindingGesturePrefsGroup extends Adw.PreferencesGroup {
-		private _settings: GioSettings;
+		private _settings: Gio.Settings;
 		private _prefsWindow: Adw.PreferencesWindow;
 		private _appRows: Map<string, typeof AppGestureSettingsRow.prototype>;
 		private _cachedSettings: Record<string, AppGestureSettings>;
@@ -173,7 +173,7 @@ const AppKeybindingGesturePrefsGroup = registerClass(
 		 * @param prefsWindow parent preferences window
 		 * @param settings extension settings object
 		 */
-		constructor(prefsWindow: Adw.PreferencesWindow, settings: GioSettings) {
+		constructor(prefsWindow: Adw.PreferencesWindow, settings: Gio.Settings) {
 			super({
 				title: 'Enable application specific gestures',
 				description: 'Hold and then swipe to activate the gesture',
@@ -360,7 +360,7 @@ const AppKeybindingGesturePrefsGroup = registerClass(
 /**
  * @returns preference page for application gestures
  */
-export function getAppKeybindingGesturePrefsPage(prefsWindow: Adw.PreferencesWindow, settings: GioSettings) {
+export function getAppKeybindingGesturePrefsPage(prefsWindow: Adw.PreferencesWindow, settings: Gio.Settings) {
 	const page = new Adw.PreferencesPage({
 		title: 'App Gestures',
 		icon_name: 'org.gnome.Settings-applications-symbolic',

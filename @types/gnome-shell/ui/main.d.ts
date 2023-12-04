@@ -8,7 +8,8 @@ import Shell from '../../gir-generated/shell-13';
 import St from '../../gir-generated/st-13';
 
 
-declare const global: Shell.Global;
+//declare const global: Shell.Global;
+import { CustomEventType } from '../global';
 
 declare namespace __shell_private_types {
   class TouchpadGesture extends GObject.Object {
@@ -67,7 +68,7 @@ declare const layoutManager: GObject.Object & {
     currentMonitor: __shell_private_types.IMonitorState,
     getWorkAreaForMonitor: (index: number) => Mtk.Rectangle,
 
-    connect(id: 'monitors-changed', callback: () => void): void;
+    connect(id: 'monitors-changed', callback: () => void): number;
 };
 
 declare const wm: {

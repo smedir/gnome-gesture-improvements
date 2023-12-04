@@ -2,11 +2,11 @@ import Clutter from 'gi://Clutter';
 import GObject from 'gi://GObject';
 import Meta from 'gi://Meta';
 import Shell from 'gi://Shell';
-// import { CustomEventType, global, imports } from 'gnome-shell';
 import { registerClass } from '../../common/utils/gobject';
 import { TouchpadConstants } from '../../constants';
 import * as DBusUtils from '../utils/dbus';
 
+import { CustomEventType, global } from 'resource:///org.gnome/shell/global.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
 const MIN_ANIMATION_DURATION = 100;
