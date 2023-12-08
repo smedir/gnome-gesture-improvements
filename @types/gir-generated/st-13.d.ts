@@ -544,153 +544,153 @@ module Adjustment {
 
 }
 
-interface Adjustment extends Clutter.Animatable {
+// interface Adjustment extends Clutter.Animatable {
 
-    // Own properties of St-13.St.Adjustment
+//     // Own properties of St-13.St.Adjustment
 
-    /**
-     * If the adjustment is used as #ClutterAnimatable for a
-     * #ClutterPropertyTransition, this property is used to determine which
-     * monitor should drive the animation.
-     */
-    actor: Clutter.Actor
-    /**
-     * The minimum value of the adjustment.
-     */
-    lower: number
-    /**
-     * The page increment of the adjustment.
-     */
-    page_increment: number
-    /**
-     * The page size of the adjustment.
-     * 
-     * Note that the page-size is irrelevant and should be set to zero if the
-     * adjustment is used for a simple scalar value.
-     */
-    page_size: number
-    /**
-     * The step increment of the adjustment.
-     */
-    step_increment: number
-    /**
-     * The maximum value of the adjustment.
-     * 
-     * Note that values will be restricted by `upper - page-size` if
-     * #StAdjustment:page-size is non-zero.
-     */
-    upper: number
-    /**
-     * The value of the adjustment.
-     */
-    value: number
+//     /**
+//      * If the adjustment is used as #ClutterAnimatable for a
+//      * #ClutterPropertyTransition, this property is used to determine which
+//      * monitor should drive the animation.
+//      */
+//     actor: Clutter.Actor
+//     /**
+//      * The minimum value of the adjustment.
+//      */
+//     lower: number
+//     /**
+//      * The page increment of the adjustment.
+//      */
+//     page_increment: number
+//     /**
+//      * The page size of the adjustment.
+//      * 
+//      * Note that the page-size is irrelevant and should be set to zero if the
+//      * adjustment is used for a simple scalar value.
+//      */
+//     page_size: number
+//     /**
+//      * The step increment of the adjustment.
+//      */
+//     step_increment: number
+//     /**
+//      * The maximum value of the adjustment.
+//      * 
+//      * Note that values will be restricted by `upper - page-size` if
+//      * #StAdjustment:page-size is non-zero.
+//      */
+//     upper: number
+//     /**
+//      * The value of the adjustment.
+//      */
+//     value: number
 
-    // Own fields of St-13.St.Adjustment
+//     // Own fields of St-13.St.Adjustment
 
-    parent_instance: GObject.Object
+//     parent_instance: GObject.Object
 
-    // Owm methods of St-13.St.Adjustment
+//     // Owm methods of St-13.St.Adjustment
 
-    /**
-     * Add a #ClutterTransition for the adjustment. If the transition stops, it will
-     * be automatically removed if #ClutterTransition:remove-on-complete is %TRUE.
-     * @param name a unique name for the transition
-     * @param transition a #ClutterTransition
-     */
-    add_transition(name: string | null, transition: Clutter.Transition): void
-    /**
-     * Adjusts the adjustment using delta values from a scroll event.
-     * You should use this instead of using st_adjustment_set_value()
-     * as this method will tweak the values directly using the same
-     * math as GTK+, to ensure that scrolling is consistent across
-     * the environment.
-     * @param delta A delta, retrieved directly from clutter_event_get_scroll_delta()   or similar.
-     */
-    adjust_for_scroll_event(delta: number): void
-    /**
-     * Set #StAdjustment:value to a value clamped between `lower` and `upper`. The
-     * clamping described by st_adjustment_set_value() still applies.
-     * @param lower the lower value
-     * @param upper the upper value
-     */
-    clamp_page(lower: number, upper: number): void
-    /**
-     * Get the #ClutterTransition for `name` previously added with
-     * st_adjustment_add_transition() or %NULL if not found.
-     * @param name a transition name
-     * @returns a #ClutterTransition
-     */
-    get_transition(name: string | null): Clutter.Transition | null
-    /**
-     * Gets the current value of the adjustment. See st_adjustment_set_value().
-     * @returns The current value of the adjustment
-     */
-    get_value(): number
-    /**
-     * Gets all of `adjustment'`s values at once.
-     */
-    get_values(): [ /* value */ number, /* lower */ number, /* upper */ number, /* step_increment */ number, /* page_increment */ number, /* page_size */ number ]
-    remove_transition(name: string | null): void
-    /**
-     * Sets the #StAdjustment value. The value is clamped to lie between
-     * #StAdjustment:lower and #StAdjustment:upper - #StAdjustment:page-size.
-     * @param value the new value
-     */
-    set_value(value: number): void
-    /**
-     * Sets all properties of the adjustment at once.
-     * 
-     * Use this function to avoid multiple emissions of the #GObject::notify and
-     * #StAdjustment::changed signals. See st_adjustment_set_lower() for an
-     * alternative way of compressing multiple emissions of #GObject::notify into
-     * one.
-     * @param value the new value
-     * @param lower the new minimum value
-     * @param upper the new maximum value
-     * @param step_increment the new step increment
-     * @param page_increment the new page increment
-     * @param page_size the new page size
-     */
-    set_values(value: number, lower: number, upper: number, step_increment: number, page_increment: number, page_size: number): void
+//     /**
+//      * Add a #ClutterTransition for the adjustment. If the transition stops, it will
+//      * be automatically removed if #ClutterTransition:remove-on-complete is %TRUE.
+//      * @param name a unique name for the transition
+//      * @param transition a #ClutterTransition
+//      */
+//     add_transition(name: string | null, transition: Clutter.Transition): void
+//     /**
+//      * Adjusts the adjustment using delta values from a scroll event.
+//      * You should use this instead of using st_adjustment_set_value()
+//      * as this method will tweak the values directly using the same
+//      * math as GTK+, to ensure that scrolling is consistent across
+//      * the environment.
+//      * @param delta A delta, retrieved directly from clutter_event_get_scroll_delta()   or similar.
+//      */
+//     adjust_for_scroll_event(delta: number): void
+//     /**
+//      * Set #StAdjustment:value to a value clamped between `lower` and `upper`. The
+//      * clamping described by st_adjustment_set_value() still applies.
+//      * @param lower the lower value
+//      * @param upper the upper value
+//      */
+//     clamp_page(lower: number, upper: number): void
+//     /**
+//      * Get the #ClutterTransition for `name` previously added with
+//      * st_adjustment_add_transition() or %NULL if not found.
+//      * @param name a transition name
+//      * @returns a #ClutterTransition
+//      */
+//     get_transition(name: string | null): Clutter.Transition | null
+//     /**
+//      * Gets the current value of the adjustment. See st_adjustment_set_value().
+//      * @returns The current value of the adjustment
+//      */
+//     get_value(): number
+//     /**
+//      * Gets all of `adjustment'`s values at once.
+//      */
+//     get_values(): [ /* value */ number, /* lower */ number, /* upper */ number, /* step_increment */ number, /* page_increment */ number, /* page_size */ number ]
+//     remove_transition(name: string | null): void
+//     /**
+//      * Sets the #StAdjustment value. The value is clamped to lie between
+//      * #StAdjustment:lower and #StAdjustment:upper - #StAdjustment:page-size.
+//      * @param value the new value
+//      */
+//     set_value(value: number): void
+//     /**
+//      * Sets all properties of the adjustment at once.
+//      * 
+//      * Use this function to avoid multiple emissions of the #GObject::notify and
+//      * #StAdjustment::changed signals. See st_adjustment_set_lower() for an
+//      * alternative way of compressing multiple emissions of #GObject::notify into
+//      * one.
+//      * @param value the new value
+//      * @param lower the new minimum value
+//      * @param upper the new maximum value
+//      * @param step_increment the new step increment
+//      * @param page_increment the new page increment
+//      * @param page_size the new page size
+//      */
+//     set_values(value: number, lower: number, upper: number, step_increment: number, page_increment: number, page_size: number): void
 
-    // Own virtual methods of St-13.St.Adjustment
+//     // Own virtual methods of St-13.St.Adjustment
 
-    vfunc_changed(): void
+//     vfunc_changed(): void
 
-    // Own signals of St-13.St.Adjustment
+//     // Own signals of St-13.St.Adjustment
 
-    connect(sigName: "changed", callback: Adjustment.ChangedSignalCallback): number
-    connect_after(sigName: "changed", callback: Adjustment.ChangedSignalCallback): number
-    emit(sigName: "changed", ...args: any[]): void
+//     connect(sigName: "changed", callback: Adjustment.ChangedSignalCallback): number
+//     connect_after(sigName: "changed", callback: Adjustment.ChangedSignalCallback): number
+//     emit(sigName: "changed", ...args: any[]): void
 
-    // Class property signals of St-13.St.Adjustment
+//     // Class property signals of St-13.St.Adjustment
 
-    connect(sigName: "notify::actor", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::actor", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::actor", ...args: any[]): void
-    connect(sigName: "notify::lower", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::lower", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::lower", ...args: any[]): void
-    connect(sigName: "notify::page-increment", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::page-increment", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::page-increment", ...args: any[]): void
-    connect(sigName: "notify::page-size", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::page-size", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::page-size", ...args: any[]): void
-    connect(sigName: "notify::step-increment", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::step-increment", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::step-increment", ...args: any[]): void
-    connect(sigName: "notify::upper", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::upper", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::upper", ...args: any[]): void
-    connect(sigName: "notify::value", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::value", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify::value", ...args: any[]): void
-    connect(sigName: string, callback: (...args: any[]) => void): number
-    connect_after(sigName: string, callback: (...args: any[]) => void): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-}
+//     connect(sigName: "notify::actor", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+//     connect_after(sigName: "notify::actor", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+//     emit(sigName: "notify::actor", ...args: any[]): void
+//     connect(sigName: "notify::lower", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+//     connect_after(sigName: "notify::lower", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+//     emit(sigName: "notify::lower", ...args: any[]): void
+//     connect(sigName: "notify::page-increment", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+//     connect_after(sigName: "notify::page-increment", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+//     emit(sigName: "notify::page-increment", ...args: any[]): void
+//     connect(sigName: "notify::page-size", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+//     connect_after(sigName: "notify::page-size", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+//     emit(sigName: "notify::page-size", ...args: any[]): void
+//     connect(sigName: "notify::step-increment", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+//     connect_after(sigName: "notify::step-increment", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+//     emit(sigName: "notify::step-increment", ...args: any[]): void
+//     connect(sigName: "notify::upper", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+//     connect_after(sigName: "notify::upper", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+//     emit(sigName: "notify::upper", ...args: any[]): void
+//     connect(sigName: "notify::value", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+//     connect_after(sigName: "notify::value", callback: (($obj: Adjustment, pspec: GObject.ParamSpec) => void)): number
+//     emit(sigName: "notify::value", ...args: any[]): void
+//     connect(sigName: string, callback: (...args: any[]) => void): number
+//     connect_after(sigName: string, callback: (...args: any[]) => void): number
+//     emit(sigName: string, ...args: any[]): void
+//     disconnect(id: number): void
+// }
 
 class Adjustment extends GObject.Object {
 

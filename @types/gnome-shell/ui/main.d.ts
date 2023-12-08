@@ -10,23 +10,23 @@ import St from '../../gir-generated/st-13';
 
 //declare const global: Shell.Global;
 import { CustomEventType } from '../global';
+import { __shell_private_types } from '../global';
+// declare namespace __shell_private_types {
+//   class TouchpadGesture extends GObject.Object {
+//   	destroy(): void;
+//   	_handleEvent(actor: Clutter.Actor | undefined, event: CustomEventType): boolean;
+//   }
 
-declare namespace __shell_private_types {
-  class TouchpadGesture extends GObject.Object {
-  	destroy(): void;
-  	_handleEvent(actor: Clutter.Actor | undefined, event: CustomEventType): boolean;
-  }
-
-  interface IMonitorState {
-    x: number,
-    y: number,
-    width: number,
-    height: number,
-    geometry_scale: number,
-    index: number,
-    inFullscreen: () => boolean,
-  }
-}
+//   interface IMonitorState {
+//     x: number,
+//     y: number,
+//     width: number,
+//     height: number,
+//     geometry_scale: number,
+//     index: number,
+//     inFullscreen: () => boolean,
+//   }
+// }
 
 declare const actionMode: Shell.ActionMode;
 declare function notify(message: string): void;

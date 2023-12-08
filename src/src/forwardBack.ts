@@ -2,7 +2,7 @@ import Clutter from 'gi://Clutter';
 import Shell from 'gi://Shell';
 import Meta from 'gi://Meta';
 
-//import { imports, global } from 'gnome-shell';
+import { ISubExtension, global } from 'resource:///org.gnome/shell/global.js';
 
 import { ExtSettings } from '../constants';
 import { ArrowIconAnimation } from './animations/arrow';

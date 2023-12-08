@@ -45,7 +45,7 @@ declare interface ISubExtension {
 }
 
 declare interface Math {
-	clamp(num: number, min: number, max: number): number;
+  clamp(num: number, min: number, max: number): number;
 }
 
 // types

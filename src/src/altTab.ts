@@ -6,8 +6,9 @@ import St from 'gi://St';
 import { AltTabConstants, ExtSettings } from '../constants';
 import { TouchpadSwipeGesture } from './swipeTracker';
 
-import * as Main from 'resource:///org/gnome/shell/js/ui/main.js';
-import { WindowSwitcherPopup } from 'resource:///org/gnome/shell/js/ui/ctrlAltTab.js';
+import * as Main from 'resource:///org/gnome/shell//ui/main.js';
+import { WindowSwitcherPopup } from 'resource:///org/gnome/shell/ui/altTab.js';
+import { ISubExtension } from '../../@types/gnome-shell/global';
 
 let dummyWinCount = AltTabConstants.DUMMY_WIN_COUNT;
 
