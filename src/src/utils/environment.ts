@@ -1,21 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { Actor, AnimationMode } from 'gi://Clutter';
+import Clutter from 'gi://Clutter';
 import GObject from 'gi://GObject';
-import { Adjustment } from 'gi://St';
+import St from 'gi://St';
+import { KeysOfType } from '../../../@types/gnome-shell/global';
 
 declare type EaseParamsType<T extends GObject.Object> = {
 	duration: number;
-	mode: AnimationMode;
+	mode: Clutter.AnimationMode;
 	repeatCount?: number;
 	autoReverse?: boolean;
 	onStopped?: (isFinished?: boolean) => void;
 } & { [P in KeysOfType<T, number>]?: number };
 
-export function easeActor<T extends Actor>(actor: T, params: EaseParamsType<T>): void {
+export function easeActor<T extends Clutter.Actor>(actor: T, params: EaseParamsType<T>): void {
 	(actor as any).ease(params);
 }
 
-export function easeAdjustment(actor: Adjustment, value: number, params: EaseParamsType<Adjustment>): void {
+export function easeAdjustment(actor: St.Adjustment, value: number, params: EaseParamsType<St.Adjustment>): void {
 	(actor as any).ease(value, params);
 }
