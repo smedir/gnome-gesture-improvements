@@ -1,7 +1,7 @@
 import Clutter from 'gi://Clutter';
 import Gio from 'gi://Gio';
 import GObject from 'gi://GObject';
-// import { CustomEventType, global, imports } from 'gnome-shell';
+import { CustomEventType, global } from 'resource:///org.gnome/shell/global.js';
 import { registerClass } from '../../common/utils/gobject';
 import { printStack } from '../../common/utils/logging';
 
@@ -65,7 +65,7 @@ const DBusWrapperGIExtension = registerClass({
 		super();
 
 		const ProxyClass = Gio.DBusProxy.makeProxyWrapper(X11GestureDaemonXml);
-		this._proxy = new ProxyClass(
+		this._proxy = ProxyClass(
 			Gio.DBus.session,
 			'org.gestureImprovements.gestures',
 			'/org/gestureImprovements/gestures',
@@ -148,21 +148,21 @@ export function subscribe(callback: (actor: never | undefined, event: CustomEven
 	}
 
 	connectedSignalIds.push(
-		proxy.connect('TouchpadSwipe', (_source, sphase, fingers, dx, dy, time) => {
+		proxy.connect('TouchpadSwipe', (_source:Clutter.Actor, sphase:string, fingers:number, dx:number, dy:number, time:number) => {
 			const event = GenerateEvent(Clutter.EventType.TOUCHPAD_SWIPE, sphase, fingers, time, { dx, dy });
 			return callback(undefined, event);
 		}),
 	);
 
 	connectedSignalIds.push(
-		proxy.connect('TouchpadHold', (_source, sphase, fingers, time, is_cancelled) => {
+		proxy.connect('TouchpadHold', (_source:Clutter.Actor, sphase:string, fingers:number, time:number, is_cancelled:boolean) => {
 			const event = GenerateEvent(Clutter.EventType.TOUCHPAD_HOLD, sphase, fingers, time, { is_cancelled });
 			return callback(undefined, event);
 		}),
 	);
 
 	connectedSignalIds.push(
-		proxy.connect('TouchpadPinch', (_source, sphase, fingers, pinch_angle_delta, pinch_scale, time) => {
+		proxy.connect('TouchpadPinch', (_source:Clutter.Actor, sphase:string, fingers:number, pinch_angle_delta:number, pinch_scale:number, time:number) => {
 			const event = GenerateEvent(Clutter.EventType.TOUCHPAD_PINCH, sphase, fingers, time, { pinch_angle_delta, pinch_scale });
 			return callback(undefined, event);
 		}),
